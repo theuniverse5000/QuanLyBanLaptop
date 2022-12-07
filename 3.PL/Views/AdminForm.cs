@@ -1,6 +1,7 @@
 ﻿using _2.BUS.IService;
 using _2.BUS.Service;
 using _2.BUS.ViewModels;
+using System.Net.Mail;
 
 namespace _3.PL.Views
 {
@@ -124,7 +125,14 @@ namespace _3.PL.Views
             LoadDataVoucher(voucherService.GetVoucher());
             LoadCombobox();
         }
-
+        public bool phoneformat(string phone)
+        {
+            if (phone != null && phone.Trim().Length == 10)
+            {
+                return true;
+            }
+            return false;
+        }
         private void btn_themch_Click(object sender, EventArgs e)
         {
             if (tbx_macuahang.Text == "" || tbx_tencuahang.Text == "" || tbx_diachicuahang.Text == "" || tbx_sdtcuahang.Text == "")
@@ -133,25 +141,46 @@ namespace _3.PL.Views
             }
             else
             {
-                CuaHangView thao = new CuaHangView();
-                thao.ID = Guid.NewGuid();
-                thao.Ma = tbx_macuahang.Text;
-                thao.Ten = tbx_tencuahang.Text;
-                thao.DiaChi = tbx_diachicuahang.Text;
-                thao.Sdt = tbx_sdtcuahang.Text;
-                if (cuaHangService.CheckMa(tbx_macuahang.Text))
+                if (phoneformat(tbx_sdtcuahang.Text) == true)
                 {
-                    MessageBox.Show("Hãy kiểm tra mã cửa hàng", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CuaHangView thao = new CuaHangView();
+                    thao.ID = Guid.NewGuid();
+                    thao.Ma = tbx_macuahang.Text;
+                    thao.Ten = tbx_tencuahang.Text;
+                    thao.DiaChi = tbx_diachicuahang.Text;
+                    thao.Sdt = tbx_sdtcuahang.Text;
+                    if (cuaHangService.CheckMa(tbx_macuahang.Text))
+                    {
+                        MessageBox.Show("Hãy kiểm tra mã cửa hàng", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show(cuaHangService.Add(thao));
+                        LoadCuaHang(cuaHangService.GetCuaHang());
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(cuaHangService.Add(thao));
-                    LoadCuaHang(cuaHangService.GetCuaHang());
+                    MessageBox.Show("Số điện thoại phải là 10 số .");
                 }
             }
-
-
-        }
+                
+                //CuaHangView thao = new CuaHangView();
+                //thao.ID = Guid.NewGuid();
+                //thao.Ma = tbx_macuahang.Text;
+                //thao.Ten = tbx_tencuahang.Text;
+                //thao.DiaChi = tbx_diachicuahang.Text;
+                //thao.Sdt = tbx_sdtcuahang.Text;
+                //if (cuaHangService.CheckMa(tbx_macuahang.Text))
+                //{
+                //    MessageBox.Show("Hãy kiểm tra mã cửa hàng", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    MessageBox.Show(cuaHangService.Add(thao));
+                //    LoadCuaHang(cuaHangService.GetCuaHang());
+                //}
+            }
 
         private void dtg_cuahang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -170,14 +199,6 @@ namespace _3.PL.Views
             }
 
         }
-        public bool phoneformat(string phone)
-        {
-            if (phone != null && phone.Trim().Length == 10)
-            {
-                return true;
-            }
-            return false;
-        }
         private void btn_suach_Click(object sender, EventArgs e)
         {
             if (tbx_tencuahang.Text == "" || tbx_macuahang.Text == "" || tbx_diachicuahang.Text == "" || tbx_sdtcuahang.Text == "")
@@ -186,7 +207,7 @@ namespace _3.PL.Views
             }
             else
             {
-                if (phoneformat(tbx_sdtcuahang.Text) == true)
+                if (phoneformat(tbx_sdtnhanvien.Text) == true)
                 {
                     CuaHangView thao = new CuaHangView();
                     thao.ID = GetIdCuaHang;
@@ -296,36 +317,66 @@ namespace _3.PL.Views
             }
 
         }
+        public bool IsEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        
+            
+        }
 
         private void btn_themnhanvien_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tbx_manhanvien.Text == "" || tbx_hotennhanvien.Text == "" || tbx_diachinhanvien.Text == "" || tbx_sdtnhanvien.Text == "" || tbx_emailnhanvien.Text == "" || tbx_matkhaunhanvien.Text == "" || cbb_idcuahang.Text == "" || cbb_idchucvu.Text == "")
+                if (tbx_manhanvien.Text == "" || tbx_hotennhanvien.Text == "" || tbx_diachinhanvien.Text == "" || tbx_sdtnhanvien.Text == "" || tbx_emailnhanvien.Text == "" || tbx_matkhaunhanvien.Text == "" || cbb_idcuahang.Text == "" || cbb_idchucvu.Text == ""
+                 )
                 {
                     MessageBox.Show("Hãy điền đủ thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
+            }
                 else
                 {
-                    NhanVienView t = new NhanVienView();
-                    t.ID = Guid.NewGuid();
-                    t.Ma = tbx_manhanvien.Text;
-                    t.HoTen = tbx_hotennhanvien.Text;
-                    t.DiaChi = tbx_diachinhanvien.Text;
-                    t.Gmail = tbx_emailnhanvien.Text;
-                    t.SDT = tbx_sdtnhanvien.Text;
-                    t.MatKhau = tbx_matkhaunhanvien.Text;
-                    t.TrangThai = Convert.ToInt32(nud_ttnhanvien.Value);
-                    t.IdCuaHang = cuaHangService.GetCuaHang().FirstOrDefault(a => a.Ma == cbb_idcuahang.Text).ID;
-                    t.IdChucVu = chucVuService.GetChucVu().FirstOrDefault(a => a.Ma == cbb_idchucvu.Text).ID;
-                    if (nhanVienService.CheckMa(tbx_manhanvien.Text))
+                    if (IsEmail(tbx_emailnhanvien.Text) == true)
                     {
-                        MessageBox.Show("Mã đã có");
+                        if (phoneformat(tbx_sdtnhanvien.Text) == true)
+                        {
+                            NhanVienView t = new NhanVienView();
+                            t.ID = Guid.NewGuid();
+                            t.Ma = tbx_manhanvien.Text;
+                            t.HoTen = tbx_hotennhanvien.Text;
+                            t.DiaChi = tbx_diachinhanvien.Text;
+                            t.Gmail = tbx_emailnhanvien.Text;
+                            t.SDT = tbx_sdtnhanvien.Text;
+                            t.MatKhau = tbx_matkhaunhanvien.Text;
+                            t.TrangThai = Convert.ToInt32(nud_ttnhanvien.Value);
+                            t.IdCuaHang = cuaHangService.GetCuaHang().FirstOrDefault(a => a.Ma == cbb_idcuahang.Text).ID;
+                            t.IdChucVu = chucVuService.GetChucVu().FirstOrDefault(a => a.Ma == cbb_idchucvu.Text).ID;
+                            if (nhanVienService.CheckMa(tbx_manhanvien.Text))
+                            {
+                                MessageBox.Show("Mã đã có");
+                            }
+                            else
+                            {
+                                MessageBox.Show(nhanVienService.AddNhanVien(t));
+                                LoadNhanVien(nhanVienService.GetAllNhanVien());
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Số điện thoại phải là 10 số .");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(nhanVienService.AddNhanVien(t));
-                        LoadNhanVien(nhanVienService.GetAllNhanVien());
+                        MessageBox.Show("Hãy nhập đúng Email!");
                     }
                 }
             }
@@ -543,7 +594,7 @@ namespace _3.PL.Views
             TimeSpan Check = NgayKT - NgayBD;
             if (Check.TotalHours <= 0)
             {
-                MessageBox.Show("Mời bạn chọn ngày kết thúc lớn hơn ngày bắt đầy ");
+                MessageBox.Show("Mời bạn chọn ngày kết thúc lớn hơn ngày bắt đầu ");
                 dtp_ngaybdvc.Value = DateTime.Now;
                 //dtp_ngayktvc.Value = DateTime.Now;
             }

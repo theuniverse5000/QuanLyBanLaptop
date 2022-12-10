@@ -53,6 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dtp_loctheongay = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.btn_exportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_hoadonchitiet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -331,11 +332,24 @@
             this.label8.TabIndex = 45;
             this.label8.Text = "Chọn ngày muốn xem";
             // 
+            // btn_exportExcel
+            // 
+            this.btn_exportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_exportExcel.Location = new System.Drawing.Point(978, 79);
+            this.btn_exportExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_exportExcel.Name = "btn_exportExcel";
+            this.btn_exportExcel.Size = new System.Drawing.Size(128, 49);
+            this.btn_exportExcel.TabIndex = 45;
+            this.btn_exportExcel.Text = "Export Excel";
+            this.btn_exportExcel.UseVisualStyleBackColor = false;
+            this.btn_exportExcel.Click += new System.EventHandler(this.btn_exportExcel_Click);
+            // 
             // DataStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 732);
+            this.Controls.Add(this.btn_exportExcel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtp_loctheongay);
             this.Controls.Add(this.groupBox1);
@@ -379,5 +393,6 @@
         private Label label9;
         private Label label8;
         private ComboBox cbb_timtheonam;
+        private Button btn_exportExcel;
     }
 }

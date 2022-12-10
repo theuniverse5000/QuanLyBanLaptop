@@ -39,8 +39,8 @@ namespace _1.DAL.Models
             //UseSqlServer("Data Source=LAPTOP-NBBU942O\\SQLEXPRESS;Initial Catalog=QuanLyBanLaptop_da1;" +
             //"Persist Security Info=True;User ID=sa;Password=1342003")));
             //base.OnConfiguring((optionsBuilder.UseSqlServer(@"Server=DESKTOP - P8UA93V\SQLEXPRESS\SQLEXPRESS;Database=Database_DA1;Trusted_Connection=True;")));
-            base.OnConfiguring((optionsBuilder.UseSqlServer(@"Server=DESKTOP-P8UA93V\SQLEXPRESS;Database=Database_DA1;Trusted_Connection=True;")));
-
+            //base.OnConfiguring((optionsBuilder.UseSqlServer(@"Server=DESKTOP-P8UA93V\SQLEXPRESS;Database=Database_DA1;Trusted_Connection=True;")));
+            base.OnConfiguring((optionsBuilder.UseSqlServer(@"Server=DESKTOP-VVKT5NE\SQLEXPRESS;Database=QuanLyBanLaptop_da1;Trusted_Connection=True;")));
 
 
         }

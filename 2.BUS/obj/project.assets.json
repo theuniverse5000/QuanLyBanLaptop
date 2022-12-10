@@ -1934,11 +1934,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\2.BUS\\2.BUS.csproj",
+      "projectUniqueName": "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\2.BUS\\2.BUS.csproj",
       "projectName": "2.BUS",
-      "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\2.BUS\\2.BUS.csproj",
+      "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\2.BUS\\2.BUS.csproj",
       "packagesPath": "C:\\Users\\dinht\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\2.BUS\\obj\\",
+      "outputPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\2.BUS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1955,8 +1955,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\1.DAL\\1.DAL.csproj": {
-              "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\1.DAL\\1.DAL.csproj"
+            "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\1.DAL\\1.DAL.csproj": {
+              "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\1.DAL\\1.DAL.csproj"
             }
           }
         }

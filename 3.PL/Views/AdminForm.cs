@@ -201,30 +201,36 @@ namespace _3.PL.Views
         }
         private void btn_suach_Click(object sender, EventArgs e)
         {
-            if (tbx_tencuahang.Text == "" || tbx_macuahang.Text == "" || tbx_diachicuahang.Text == "" || tbx_sdtcuahang.Text == "")
+            try
             {
-                MessageBox.Show("Mời bạn nhập dữ liệu");
-            }
-            else
-            {
-                if (phoneformat(tbx_sdtnhanvien.Text) == true)
+                if (tbx_tencuahang.Text == "" || tbx_macuahang.Text == "" || tbx_diachicuahang.Text == "" || tbx_sdtcuahang.Text == "")
                 {
-                    CuaHangView thao = new CuaHangView();
-                    thao.ID = GetIdCuaHang;
-                    // thao.Ma = tbx_macuahang.Text;
-                    thao.Ten = tbx_tencuahang.Text;
-                    thao.DiaChi = tbx_diachicuahang.Text;
-                    thao.Sdt = tbx_sdtcuahang.Text;
-
-                    MessageBox.Show(cuaHangService.Update(thao));
-                    LoadCuaHang(cuaHangService.GetCuaHang());
-
+                    MessageBox.Show("Mời bạn nhập dữ liệu");
                 }
                 else
                 {
-                    MessageBox.Show("Mời bạn nhập đúng kiểu sdt");
-                }
+                    if (phoneformat(tbx_sdtcuahang.Text) == true)
+                    {
+                        CuaHangView thao = new CuaHangView();
+                        thao.ID = GetIdCuaHang;
+                        // thao.Ma = tbx_macuahang.Text;
+                        thao.Ten = tbx_tencuahang.Text;
+                        thao.DiaChi = tbx_diachicuahang.Text;
+                        thao.Sdt = tbx_sdtcuahang.Text;
+                        MessageBox.Show(cuaHangService.Update(thao));
+                        LoadCuaHang(cuaHangService.GetCuaHang());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mời bạn nhập đúng kiểu sdt");
+                    }
 
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Hãy kiểm tra thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -451,8 +457,9 @@ namespace _3.PL.Views
 
         private void btn_themvoucher_Click(object sender, EventArgs e)
         {
-
-            if (tbx_mavoucher.Text == "" || tbx_soluongvoucher.Text == "" || tbx_tenvoucher.Text == "" || tbx_giatrivoucher.Text == "")
+            try
+            {
+                if (tbx_mavoucher.Text == "" || tbx_soluongvoucher.Text == "" || tbx_tenvoucher.Text == "" || tbx_giatrivoucher.Text == "")
             {
                 MessageBox.Show("Mời bạn nhập nhữ liệu!!");
             }
@@ -470,8 +477,7 @@ namespace _3.PL.Views
                     }
                     else
                     {
-                        try
-                        {
+                       
                             VoucherView v = new VoucherView();
                             v.ID = Guid.NewGuid();
                             v.Ma = tbx_mavoucher.Text;
@@ -482,20 +488,22 @@ namespace _3.PL.Views
                             v.SoLuong = Convert.ToInt32(tbx_soluongvoucher.Text);
                             MessageBox.Show(voucherService.Add(v));
                             LoadDataVoucher(voucherService.GetVoucher());
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("Hãy kiểm tra thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+
                     }
                 }
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hãy kiểm tra thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btn_suavoucher_Click(object sender, EventArgs e)
         {
-    
-            if (tbx_mavoucher.Text == "" || tbx_soluongvoucher.Text == "" || tbx_tenvoucher.Text == "" || tbx_giatrivoucher.Text == "")
+            try
+            {
+                if (tbx_mavoucher.Text == "" || tbx_soluongvoucher.Text == "" || tbx_tenvoucher.Text == "" || tbx_giatrivoucher.Text == "")
             {
                 MessageBox.Show("Mời bạn nhập nhữ liệu!!");
             }
@@ -507,8 +515,7 @@ namespace _3.PL.Views
                 }
                 else
                 {
-                    try
-                    {
+                 
                         VoucherView v = new VoucherView();
                         v.ID = GetIdVoucher;
                         v.Ten = tbx_tenvoucher.Text;
@@ -518,13 +525,14 @@ namespace _3.PL.Views
                         v.SoLuong = Convert.ToInt32(tbx_soluongvoucher.Text);
                         MessageBox.Show(voucherService.Update(v));
                         LoadDataVoucher(voucherService.GetVoucher());
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Hãy kiểm tra thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+
 
                 }
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hãy kiểm tra thông tin", "Warrning !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -596,7 +604,7 @@ namespace _3.PL.Views
             {
                 MessageBox.Show("Mời bạn chọn ngày kết thúc lớn hơn ngày bắt đầu ");
                 dtp_ngaybdvc.Value = DateTime.Now;
-                //dtp_ngayktvc.Value = DateTime.Now;
+                dtp_ngayktvc.Value = DateTime.Now;
             }
             else
             {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6tR85YbqHo5Ur9rRYVkyB2Sb/p6cBp7HSnwvL7Bcy9tzwUneFyz6bwc7bNtPI8lDyoqysHfoFk9pejB19Fjrng==",
+  "dgSpecHash": "yrxS/BdiZMTkBy+SLGHQrrQ5aVhzkqWqK8tZRKFEI5lQP4JFD0ETfKzcBzLVJY8dx5b2/5vi1T5hiyfy1m3xfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\Duan123\\3.PL\\3.PL.csproj",
+  "projectFilePath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\duan1234\\3.PL\\3.PL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dinht\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",
